@@ -25,7 +25,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: Artifact
-          path: test.txt
+          path: files
   test:
     runs-on: ubuntu-latest
 
@@ -43,9 +43,9 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: Artifact
-          path: test.txt
+          path: files
 
       - name: See Content of the file
         run: |
           echo "Content of the file:"
-          cat test.txt
+          cat files/test.txt
