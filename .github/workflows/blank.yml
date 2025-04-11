@@ -14,7 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
 
@@ -22,17 +21,18 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project. >> test.txt
-      - uses: actions/upload-artifact@master
+
+      - uses: actions/upload-artifact@v4
         with:
           name: Artifact
           path: test.txt
+
   test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
 
@@ -40,12 +40,13 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - uses: actions/download-artifact@master
+
+      - uses: actions/download-artifact@v4
         with:
           name: Artifact
-          path: test.txt
+          path: downloaded
 
       - name: See Content of the file
         run: |
           echo "Content of the file:"
-          cat test.txt
+          cat downloaded/test.txt
